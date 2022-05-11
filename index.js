@@ -6,6 +6,7 @@ app.use(express.json());
 //we can create .env file to  store port number
 const PORT = process.env.PORT||5000;
 
+
 //creating data for rooms
 const rooms = [
   {
