@@ -16,12 +16,12 @@ const rooms = [
     noOfSeatsAvailable: "2",
     amenities: ["Parking", "Breakfast", "Wifi", "Fitness Center"],
     pricePerHr: 100,
-    bookedStatus: false,
+    bookedStatus: true,
     customerDetails: {
       customerName: "Anu",
       date: "23/05/2022",
-      startTime: "",
-      endTime: "",
+      startTime: "12:00",
+      endTime: "16:00",
     },
   },
   {
@@ -34,8 +34,8 @@ const rooms = [
     customerDetails: {
       customerName: "Bhanu",
       date: "16/05/2022",
-      startTime: 1100,
-      endTime: 1800,
+      startTime: "11:00",
+      endTime: "18:00",
     },
   },
   {
@@ -44,12 +44,12 @@ const rooms = [
     noOfSeatsAvailable: "2",
     amenities: ["Parking", "Breakfast", "Wifi", "Fitness Center"],
     pricePerHr: 100,
-    bookedStatus: false,
+    bookedStatus: true,
     customerDetails: {
       customerName: "Chitra",
       date: "18/05/2022",
-      startTime: 1000,
-      endTime: 1800,
+      startTime: "10:00",
+      endTime: "18:00",
     },
   },
   {
@@ -74,10 +74,10 @@ const rooms = [
     pricePerHr: 100,
     bookedStatus: false,
     customerDetails: {
-      customerName: "Madhu",
-      date: "02/05/2022",
-      startTime: 1200,
-      endTime: 2000,
+      customerName: "",
+      date: "",
+      startTime: "",
+      endTime: "",
     },
   },
 ];
