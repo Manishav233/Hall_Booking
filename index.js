@@ -14,12 +14,12 @@ const rooms = [
     roomID: 0,
     roomName: "300",
     noOfSeatsAvailable: "2",
-    amenities: ["Hot shower", "WIFI", "Intercom", "Room service"],
+    amenities: ["Parking", "Breakfast", "Wifi", "Fitness Center"],
     pricePerHr: 100,
     bookedStatus: false,
     customerDetails: {
-      customerName: "",
-      date: "",
+      customerName: "Anu",
+      date: "23/05/2022",
       startTime: "",
       endTime: "",
     },
@@ -28,12 +28,12 @@ const rooms = [
     roomID: 1,
     roomName: "301",
     noOfSeatsAvailable: "2",
-    amenities: ["Hot shower", "WIFI", "Intercom", "Room service"],
+    amenities: ["Parking", "Breakfast", "Wifi", "Fitness Center"],
     pricePerHr: 100,
     bookedStatus: true,
     customerDetails: {
-      customerName: "Rajesh",
-      date: "16/10/2021",
+      customerName: "Bhanu",
+      date: "16/05/2022",
       startTime: 1100,
       endTime: 1800,
     },
@@ -42,12 +42,12 @@ const rooms = [
     roomID: 2,
     roomName: "302",
     noOfSeatsAvailable: "2",
-    amenities: ["Hot shower", "WIFI", "Intercom", "Room service"],
+    amenities: ["Parking", "Breakfast", "Wifi", "Fitness Center"],
     pricePerHr: 100,
     bookedStatus: false,
     customerDetails: {
-      customerName: "Mallesh",
-      date: "18/10/2021",
+      customerName: "Chitra",
+      date: "18/05/2022",
       startTime: 1000,
       endTime: 1800,
     },
@@ -56,7 +56,7 @@ const rooms = [
     roomID: 3,
     roomName: "303",
     noOfSeatsAvailable: "2",
-    amenities: ["Hot shower", "WIFI", "Intercom", "Room service"],
+    amenities: ["Parking", "Breakfast", "Wifi", "Fitness Center"],
     pricePerHr: 100,
     bookedStatus: false,
     customerDetails: {
@@ -70,12 +70,12 @@ const rooms = [
     roomID: 4,
     roomName: "304",
     noOfSeatsAvailable: "2",
-    amenities: ["Hot shower", "WIFI", "Intercom", "Room service"],
+    amenities: ["Parking", "Breakfast", "Wifi", "Fitness Center"],
     pricePerHr: 100,
     bookedStatus: false,
     customerDetails: {
-      customerName: "Priya",
-      date: "16/11/2021",
+      customerName: "Madhu",
+      date: "02/05/2022",
       startTime: 1200,
       endTime: 2000,
     },
@@ -86,5 +86,41 @@ const rooms = [
 app.get("/", (request, response) => {
   response.send("Hall Booking API");
 });
+
+//Creating a room
+app.post("/rooms/create",(request, response) => {
+
+ const newRoom = request.body;
+  rooms.push(newRoom);
+  response.send(newRoom);
+  console.log(newRoom);
+})
+
+// Booking a room
+app.post("/rooms", (request, response) => {
+console.log("booking a room")
+  const booking = request.body;
+
+    rooms.map((room) => {
+        if (room.roomID == booking.roomID) {
+          console.log(room);
+            if (room.customerDetails.date != booking.date) {
+                room.customerDetails.customerName = booking.customerName;
+                room.customerDetails.date = booking.date;
+                room.customerDetails.startTime = booking.startTime;
+                room.customerDetails.endTime = booking.endTime;
+                room.bookedStatus = !room.bookedStatus;
+                response.send("Booking successfull")
+            } else {
+                response.send("Sorry! Room already booked for that date. Please choose another room")
+            }
+        }
+        return room;
+    })
+
+})
+
+
+
 //specifying port to use
-app.listen(PORT, () => console.log("server has started at:", PORT));
+app.listen(PORT, () => console.log("server has started at port", PORT));
