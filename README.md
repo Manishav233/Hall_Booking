@@ -2,3 +2,4 @@ Hall_Booking API : https://docs.google.com/document/d/1rwPQ2LbHtMZajA_GIZfR-Ko2M
 
 Backend code Hosted on Heroku - https://hall-booking-01.herokuapp.com/
 
+List of all booked rooms- https://hall-booking-01.herokuapp.com/rooms/
